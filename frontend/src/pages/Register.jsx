@@ -1,4 +1,4 @@
-import {useState, useEffecr} from 'react'
+import {useState, useEffect} from 'react'
 import {FaUser} from 'react-icons/fa'
 function Register() {
   const[formData, setFormData] =useState({
@@ -10,7 +10,17 @@ function Register() {
 
   const {name, email, password, password2} =formData
   
-const onChange = () => {}
+
+const onChange = (e) => {
+  setFormData((prevState)=>({
+    ...prevState,
+    [e.target.name]: e.target.value,
+  }))
+}
+
+const onSubmit =(e) =>{
+  e.preventDefault()
+}
 
   return <>
     <section className = "heading">
@@ -21,7 +31,7 @@ const onChange = () => {}
       </section>
 
       <section className="form">
-        <form>
+        <form onSubmit={onSubmit}>
           <div className="form-group">
           <input 
           type="text" 
